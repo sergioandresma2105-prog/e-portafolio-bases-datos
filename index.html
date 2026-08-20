@@ -3,214 +3,726 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>E-Portafolio | Bases de Datos 2</title>
+
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#1f2937;line-height:1.7}
-    nav{position:sticky;top:0;z-index:20;background:#172554;padding:16px 8%;display:flex;justify-content:space-between;align-items:center}
-    nav .logo{color:#fff;font-weight:bold;font-size:20px}
-    nav a{color:#fff;text-decoration:none;margin-left:22px;font-size:15px}
-    nav a:hover{opacity:.8}
-    .hero{min-height:65vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px;background:linear-gradient(135deg,#dbeafe,#eef2ff)}
-    .hero h1{font-size:clamp(40px,7vw,70px);color:#172554;margin-bottom:10px}
-    .hero h2{font-size:clamp(20px,3vw,30px);font-weight:normal;color:#374151}
-    .hero p{margin-top:18px;color:#4b5563}
-    .btn{display:inline-block;margin-top:25px;background:#172554;color:white;padding:12px 24px;border-radius:8px;text-decoration:none}
-    section{max-width:1050px;margin:auto;padding:70px 20px}
-    section>h2{text-align:center;color:#172554;font-size:32px;margin-bottom:35px}
-    .presentation{display:grid;grid-template-columns:250px 1fr;gap:40px;align-items:center;background:#fff;padding:35px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.07)}
-    .avatar{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,#bfdbfe,#e0e7ff);border:6px solid #dbeafe;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.15);position:relative;overflow:hidden}
-    .cartoon{position:relative;width:150px;height:175px}
-    .hair{position:absolute;top:4px;left:31px;width:88px;height:55px;background:#1f2937;border-radius:50% 50% 38% 38%}
-    .head{position:absolute;top:25px;left:38px;width:75px;height:82px;background:#f6cfa5;border-radius:45% 45% 48% 48%;z-index:2}
-    .ear{position:absolute;top:58px;width:17px;height:27px;background:#f6cfa5;border-radius:50%;z-index:1}
-    .ear.left{left:29px}.ear.right{right:29px}
-    .eye{position:absolute;top:55px;width:9px;height:9px;background:#1f2937;border-radius:50%;z-index:3}
-    .eye.left{left:57px}.eye.right{right:57px}
-    .smile{position:absolute;top:78px;left:60px;width:30px;height:15px;border-bottom:4px solid #7f1d1d;border-radius:0 0 30px 30px;z-index:3}
-    .body{position:absolute;top:103px;left:25px;width:100px;height:72px;background:#2563eb;border-radius:35px 35px 12px 12px;z-index:1}
-    .shirt{position:absolute;top:120px;left:49px;color:white;font-weight:bold;font-size:17px;z-index:4}
-    .cartoon .hair::after{content:"";position:absolute;left:22px;top:-4px;width:18px;height:25px;background:#1f2937;border-radius:50%;transform:rotate(-25deg)}
-    .presentation h3{font-size:28px;color:#172554;margin-bottom:15px}
-    .presentation p{margin-bottom:12px}
-    .highlight{background:#eff6ff;padding:18px;border-left:5px solid #2563eb;border-radius:6px;margin-top:18px}
-    .video-box{background:#fff;padding:35px;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.07);text-align:center}
-    .video-placeholder{max-width:850px;height:430px;margin:20px auto;background:#111827;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;padding:30px}
-    .video-box p{color:#4b5563}
-    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-    .card{background:#fff;padding:28px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,.06);border-top:5px solid #2563eb}
-    .card h3{color:#172554;margin-bottom:10px;font-size:23px}
-    .card p{color:#4b5563}
-    .about-course{background:#fff;padding:30px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
-    .about-course ul{margin:15px 0 0 25px}
-    footer{text-align:center;background:#172554;color:#fff;padding:30px}
-    @media(max-width:750px){
-      nav{flex-direction:column;gap:10px}
-      nav a{margin:0 7px}
-      .presentation{grid-template-columns:1fr;text-align:center;justify-items:center}
-      .cards{grid-template-columns:1fr}
-      .video-placeholder{height:280px}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    /* ---------- MENÚ ---------- */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #172554;
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    /* ---------- INICIO ---------- */
+
+    .hero {
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #dbeafe, #eef2ff);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 70px);
+      color: #172554;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: normal;
+      color: #374151;
+    }
+
+    .hero p {
+      margin-top: 18px;
+      color: #4b5563;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      background: #172554;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #2563eb;
+    }
+
+    /* ---------- SECCIONES ---------- */
+
+    section {
+      max-width: 1050px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    section > h2 {
+      text-align: center;
+      color: #172554;
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    /* ---------- PRESENTACIÓN ---------- */
+
+    .presentation {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 40px;
+      align-items: center;
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    /* ---------- AVATAR ---------- */
+
+    .avatar {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #bfdbfe, #e0e7ff);
+      border: 6px solid #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cartoon {
+      position: relative;
+      width: 150px;
+      height: 175px;
+    }
+
+    .hair {
+      position: absolute;
+      top: 4px;
+      left: 31px;
+      width: 88px;
+      height: 55px;
+      background: #1f2937;
+      border-radius: 50% 50% 38% 38%;
+    }
+
+    .hair::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: -4px;
+      width: 18px;
+      height: 25px;
+      background: #1f2937;
+      border-radius: 50%;
+      transform: rotate(-25deg);
+    }
+
+    .head {
+      position: absolute;
+      top: 25px;
+      left: 38px;
+      width: 75px;
+      height: 82px;
+      background: #f6cfa5;
+      border-radius: 45% 45% 48% 48%;
+      z-index: 2;
+    }
+
+    .ear {
+      position: absolute;
+      top: 58px;
+      width: 17px;
+      height: 27px;
+      background: #f6cfa5;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .ear.left {
+      left: 29px;
+    }
+
+    .ear.right {
+      right: 29px;
+    }
+
+    .eye {
+      position: absolute;
+      top: 55px;
+      width: 9px;
+      height: 9px;
+      background: #1f2937;
+      border-radius: 50%;
+      z-index: 3;
+    }
+
+    .eye.left {
+      left: 57px;
+    }
+
+    .eye.right {
+      right: 57px;
+    }
+
+    .smile {
+      position: absolute;
+      top: 78px;
+      left: 60px;
+      width: 30px;
+      height: 15px;
+      border-bottom: 4px solid #7f1d1d;
+      border-radius: 0 0 30px 30px;
+      z-index: 3;
+    }
+
+    .body {
+      position: absolute;
+      top: 103px;
+      left: 25px;
+      width: 100px;
+      height: 72px;
+      background: #2563eb;
+      border-radius: 35px 35px 12px 12px;
+      z-index: 1;
+    }
+
+    .shirt {
+      position: absolute;
+      top: 120px;
+      left: 49px;
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+      z-index: 4;
+    }
+
+    .presentation h3 {
+      font-size: 28px;
+      color: #172554;
+      margin-bottom: 15px;
+    }
+
+    .presentation p {
+      margin-bottom: 12px;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      padding: 18px;
+      border-left: 5px solid #2563eb;
+      border-radius: 6px;
+      margin-top: 18px;
+    }
+
+    /* ---------- VIDEO ---------- */
+
+    .video-box {
+      background: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+      text-align: center;
+    }
+
+    .video-box p {
+      color: #4b5563;
+    }
+
+    .video-container {
+      max-width: 850px;
+      aspect-ratio: 16 / 9;
+      margin: 25px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* ---------- INFORMACIÓN ---------- */
+
+    .about-course {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-course p {
+      margin-bottom: 15px;
+    }
+
+    .about-course ul {
+      margin: 15px 0 0 25px;
+    }
+
+    .about-course li {
+      margin-bottom: 7px;
+    }
+
+    /* ---------- EVIDENCIAS ---------- */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      border-top: 5px solid #2563eb;
+    }
+
+    .card h3 {
+      color: #172554;
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    .card p {
+      color: #4b5563;
+    }
+
+    /* ---------- OBJETIVO ---------- */
+
+    .objective {
+      text-align: center;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .objective p {
+      font-size: 19px;
+      color: #172554;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      background: #172554;
+      color: white;
+      padding: 30px;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    /* ---------- CELULARES ---------- */
+
+    @media (max-width: 750px) {
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .presentation {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .video-container {
+        aspect-ratio: 16 / 9;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="logo">Sergio Moreno</div>
-  <div>
-    <a href="#inicio">Inicio</a>
-    <a href="#presentacion">Presentación</a>
-    <a href="#video">Video</a>
-    <a href="#evidencias">Evidencias</a>
-  </div>
-</nav>
+  <!-- ==================== MENÚ ==================== -->
 
-<header class="hero" id="inicio">
-  <div>
-    <h1>E-Portafolio</h1>
-    <h2>Bases de Datos 2</h2>
-    <p>Ingeniería de Sistemas · Universidad El Bosque</p>
-    <a class="btn" href="#presentacion">Conocer mi perfil</a>
-  </div>
-</header>
+  <nav>
 
-<section id="presentacion">
-  <h2>Presentación</h2>
-  <div class="presentation">
-    <div class="avatar" role="img" aria-label="Avatar animado de Sergio Moreno">
-      <div class="cartoon">
-        <div class="hair"></div>
-        <div class="ear left"></div><div class="ear right"></div>
-        <div class="head"></div>
-        <div class="eye left"></div><div class="eye right"></div>
-        <div class="smile"></div>
-        <div class="body"></div>
-        <div class="shirt">SM</div>
-      </div>
+    <div class="logo">
+      Sergio Moreno
     </div>
+
     <div>
-      <h3>¡Hola! Soy Sergio</h3>
+      <a href="#inicio">Inicio</a>
+      <a href="#presentacion">Presentación</a>
+      <a href="#video">Video</a>
+      <a href="#evidencias">Evidencias</a>
+    </div>
+
+  </nav>
+
+
+  <!-- ==================== INICIO ==================== -->
+
+  <header class="hero" id="inicio">
+
+    <div>
+
+      <h1>E-Portafolio</h1>
+
+      <h2>Bases de Datos 2</h2>
+
       <p>
-        Soy estudiante de Ingeniería de Sistemas en la Universidad El Bosque.
-        Me gusta aprender sobre tecnología y conocer nuevas herramientas que
-        puedan ayudarme a desarrollar mejores soluciones de software.
+        Ingeniería de Sistemas · Universidad El Bosque
       </p>
-      <p>
-        Una de mis principales áreas de interés es el desarrollo de aplicaciones
-        y la gestión de información, especialmente porque las bases de datos
-        están presentes en prácticamente todos los sistemas que utilizamos.
-      </p>
-      <div class="highlight">
-        <strong>Sobre mí:</strong> En mi tiempo libre disfruto escuchar música,
-        jugar videojuegos, aprender cosas nuevas relacionadas con tecnología y
-        compartir tiempo con amigos.
+
+      <a class="btn" href="#presentacion">
+        Conocer mi perfil
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ==================== PRESENTACIÓN ==================== -->
+
+  <section id="presentacion">
+
+    <h2>Presentación</h2>
+
+    <div class="presentation">
+
+      <!-- AVATAR -->
+
+      <div
+        class="avatar"
+        role="img"
+        aria-label="Avatar animado de Sergio Moreno"
+      >
+
+        <div class="cartoon">
+
+          <div class="hair"></div>
+
+          <div class="ear left"></div>
+
+          <div class="ear right"></div>
+
+          <div class="head"></div>
+
+          <div class="eye left"></div>
+
+          <div class="eye right"></div>
+
+          <div class="smile"></div>
+
+          <div class="body"></div>
+
+          <div class="shirt">
+            SM
+          </div>
+
+        </div>
+
       </div>
+
+
+      <!-- INFORMACIÓN PERSONAL -->
+
+      <div>
+
+        <h3>
+          ¡Hola! Soy Sergio
+        </h3>
+
+        <p>
+          Soy estudiante de Ingeniería de Sistemas en la Universidad
+          El Bosque. Me gusta aprender sobre tecnología y conocer nuevas
+          herramientas que puedan ayudarme a desarrollar mejores soluciones
+          de software.
+        </p>
+
+        <p>
+          Una de mis principales áreas de interés es el desarrollo de
+          aplicaciones y la gestión de información, especialmente porque
+          las bases de datos están presentes en prácticamente todos los
+          sistemas que utilizamos.
+        </p>
+
+        <div class="highlight">
+
+          <strong>Sobre mí:</strong>
+
+          En mi tiempo libre disfruto escuchar música, jugar videojuegos,
+          aprender cosas nuevas relacionadas con tecnología y compartir
+          tiempo con amigos.
+
+        </div>
+
+      </div>
+
     </div>
-  </div>
-</section>
 
-<section id="video">
-  <h2>Video de presentación</h2>
-  <div class="video-box">
-    <p>
-      En este video me presento, cuento un poco sobre mí y explico por qué
-      Bases de Datos 2 es importante para mi formación profesional.
-    </p>
+  </section>
 
-    <div class="video-placeholder">
-  <iframe
-    width="100%"
-    height="430"
-    src="https://www.youtube.com/embed/G8gI3359W38"
-    title="Video de presentación de Sergio Moreno"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
 
-    <p>
-      El video aborda mi presentación personal, mis intereses, la importancia
-      de Bases de Datos 2 para mi futuro profesional y mi objetivo para este semestre.
-    </p>
-  </div>
-</section>
+  <!-- ==================== VIDEO ==================== -->
 
-<section>
-  <h2>¿Por qué Bases de Datos 2?</h2>
-  <div class="about-course">
-    <p>
-      Considero que Bases de Datos 2 es una asignatura importante para mi vida
-      profesional porque un ingeniero de sistemas necesita saber cómo organizar,
-      consultar y administrar información de manera eficiente.
-    </p>
-    <p>
-      Los conocimientos adquiridos en esta asignatura pueden ser aplicados en
-      proyectos de software, sistemas empresariales, aplicaciones web y
-      diferentes soluciones tecnológicas que necesiten almacenar y procesar datos.
-    </p>
-    <ul>
-      <li>Fortalecer mis conocimientos sobre bases de datos.</li>
-      <li>Mejorar mi capacidad para trabajar con información.</li>
-      <li>Aplicar los conceptos aprendidos en proyectos prácticos.</li>
-      <li>Prepararme mejor para futuros proyectos profesionales.</li>
-    </ul>
-  </div>
-</section>
+  <section id="video">
 
-<section id="evidencias">
-  <h2>Evidencias</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>SQL</h3>
+    <h2>
+      Video de presentación
+    </h2>
+
+    <div class="video-box">
+
       <p>
-        Espacio para consultas, ejercicios y actividades desarrolladas
-        utilizando SQL.
+        En este video me presento, cuento un poco sobre mí y explico por qué
+        Bases de Datos 2 es importante para mi formación profesional.
       </p>
-    </div>
 
-    <div class="card">
-      <h3>PL/SQL Scripts</h3>
+
+      <!-- VIDEO DE YOUTUBE -->
+
+      <div class="video-container">
+
+        <iframe
+          src="https://www.youtube.com/embed/G8gI3359W38"
+          title="Video de presentación de Sergio Moreno"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+
       <p>
-        Espacio para almacenar los scripts, ejercicios y evidencias
-        relacionadas con PL/SQL.
+        El video aborda mi presentación personal, mis intereses,
+        la importancia de Bases de Datos 2 para mi futuro profesional
+        y mi objetivo para este semestre.
       </p>
+
     </div>
 
-    <div class="card">
-      <h3>NoSQL</h3>
+  </section>
+
+
+  <!-- ==================== POR QUÉ BASES DE DATOS 2 ==================== -->
+
+  <section>
+
+    <h2>
+      ¿Por qué Bases de Datos 2?
+    </h2>
+
+    <div class="about-course">
+
       <p>
-        Espacio para las actividades y trabajos relacionados con bases
-        de datos NoSQL.
+        Considero que Bases de Datos 2 es una asignatura importante para
+        mi vida profesional porque un Ingeniero de Sistemas necesita saber
+        cómo organizar, consultar y administrar información de manera
+        eficiente.
       </p>
-    </div>
 
-    <div class="card">
-      <h3>Proyecto</h3>
       <p>
-        Espacio para publicar los avances, documentos y resultados del
-        proyecto de la asignatura.
+        Los conocimientos adquiridos en esta asignatura pueden ser aplicados
+        en proyectos de software, sistemas empresariales, aplicaciones web
+        y diferentes soluciones tecnológicas que necesiten almacenar y
+        procesar datos.
       </p>
-    </div>
-  </div>
-</section>
 
-<section>
-  <h2>Mi objetivo este semestre</h2>
-  <div class="about-course">
+      <ul>
+
+        <li>
+          Fortalecer mis conocimientos sobre bases de datos.
+        </li>
+
+        <li>
+          Mejorar mi capacidad para trabajar con información.
+        </li>
+
+        <li>
+          Aplicar los conceptos aprendidos en proyectos prácticos.
+        </li>
+
+        <li>
+          Prepararme mejor para futuros proyectos profesionales.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== EVIDENCIAS ==================== -->
+
+  <section id="evidencias">
+
+    <h2>
+      Evidencias
+    </h2>
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <h3>
+          SQL
+        </h3>
+
+        <p>
+          Espacio para consultas, ejercicios y actividades desarrolladas
+          utilizando SQL.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          PL/SQL Scripts
+        </h3>
+
+        <p>
+          Espacio para almacenar los scripts, ejercicios y evidencias
+          relacionadas con PL/SQL.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          NoSQL
+        </h3>
+
+        <p>
+          Espacio para las actividades y trabajos relacionados con bases
+          de datos NoSQL.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>
+          Proyecto
+        </h3>
+
+        <p>
+          Espacio para publicar los avances, documentos y resultados del
+          proyecto de la asignatura.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== OBJETIVO ==================== -->
+
+  <section>
+
+    <h2>
+      Mi objetivo este semestre
+    </h2>
+
+    <div class="objective">
+
+      <p>
+        <strong>
+          “Este semestre quiero demostrar que puedo aprender nuevos
+          conceptos, aplicarlos en proyectos prácticos y seguir creciendo
+          como futuro Ingeniero de Sistemas.”
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== FOOTER ==================== -->
+
+  <footer>
+
     <p>
-      <strong>“Este semestre quiero demostrar que puedo aprender nuevos
-      conceptos, aplicarlos en proyectos prácticos y seguir creciendo como
-      futuro Ingeniero de Sistemas.”</strong>
+      E-Portafolio de Bases de Datos 2
     </p>
-  </div>
-</section>
 
-<footer>
-  <p>E-Portafolio de Bases de Datos 2</p>
-  <p>Ingeniería de Sistemas · Universidad El Bosque</p>
-</footer>
+    <p>
+      Ingeniería de Sistemas · Universidad El Bosque
+    </p>
+
+  </footer>
 
 </body>
 </html>
