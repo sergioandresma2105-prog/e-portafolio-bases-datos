@@ -317,31 +317,39 @@
       margin-bottom: 7px;
     }
 
-    /* ---------- EVIDENCIAS ---------- */
+    /* ---------- EVIDENCIAS (detalle) ---------- */
+    .ev-intro { text-align:center; color:#4b5563; max-width:760px; margin:-15px auto 30px; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:30px; }
+    .stat { background:#172554; color:white; border-radius:12px; padding:16px; text-align:center; }
+    .stat b { display:block; font-size:28px; line-height:1.2; }
+    .stat span { font-size:13px; opacity:.85; }
+    .ev-nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:28px; }
+    .ev-nav a { background:#e0e7ff; color:#172554; padding:6px 14px; border-radius:20px; text-decoration:none; font-size:14px; }
+    .ev-nav a:hover { background:#c7d2fe; }
+    .evidence { background:white; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,.06); border-left:6px solid #2563eb; padding:28px; margin-bottom:24px; scroll-margin-top:90px; }
+    .evidence .num { color:#2563eb; font-weight:bold; font-size:13px; letter-spacing:1px; }
+    .evidence h3 { color:#172554; font-size:24px; margin:2px 0 8px; }
+    .evidence > p { color:#4b5563; margin-bottom:14px; }
+    .tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .tags span { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; border-radius:6px; padding:2px 9px; font-size:13px; }
+    .evidence h4 { color:#172554; margin:14px 0 6px; font-size:16px; }
+    .evidence ul { margin-left:22px; }
+    .evidence li { margin-bottom:5px; }
+    details { margin-top:16px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; }
+    summary { cursor:pointer; padding:10px 14px; font-weight:bold; color:#172554; }
+    pre { margin:0; padding:16px; background:#0f172a; color:#e2e8f0; border-radius:0 0 10px 10px; overflow-x:auto; font-size:13px; line-height:1.55; }
+    .files { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .files a { text-decoration:none; font-size:13px; padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; color:#1f2937; background:#fff; }
+    .files a:hover { border-color:#2563eb; color:#2563eb; }
+    .files a.sql::before { content:"SQL · "; color:#16a34a; font-weight:bold; }
+    .files a.ppt::before { content:"PPT · "; color:#ea580c; font-weight:bold; }
+    .files a.pdf::before { content:"PDF · "; color:#dc2626; font-weight:bold; }
+    .files a.txt::before { content:"TXT · "; color:#64748b; font-weight:bold; }
+    @media (max-width:750px){ .stats{grid-template-columns:repeat(2,1fr);} .evidence{padding:20px;} nav div{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;} }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
 
-    .card {
-      background: white;
-      padding: 28px;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-      border-top: 5px solid #2563eb;
-    }
-
-    .card h3 {
-      color: #172554;
-      margin-bottom: 10px;
-      font-size: 23px;
-    }
-
-    .card p {
-      color: #4b5563;
-    }
+    
+    
 
     /* ---------- OBJETIVO ---------- */
 
@@ -616,76 +624,155 @@
 
   </section>
 
+    <section id="evidencias">
 
-  <!-- ==================== EVIDENCIAS ==================== -->
+    <h2>Evidencias</h2>
 
-  <section id="evidencias">
+    <p class="ev-intro">
+      Todo el trabajo práctico de la asignatura en Oracle Database 19c. Cada evidencia
+      resume lo que hice, muestra un fragmento del código y enlaza los scripts y el
+      material de clase completos.
+    </p>
 
-    <h2>
-      Evidencias
-    </h2>
-
-    <div class="cards">
-
-
-      <div class="card">
-
-        <h3>
-          SQL
-        </h3>
-
-        <p>
-          Espacio para consultas, ejercicios y actividades desarrolladas
-          utilizando SQL.
-        </p>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>
-          PL/SQL Scripts
-        </h3>
-
-        <p>
-          Espacio para almacenar los scripts, ejercicios y evidencias
-          relacionadas con PL/SQL.
-        </p>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>
-          NoSQL
-        </h3>
-
-        <p>
-          Espacio para las actividades y trabajos relacionados con bases
-          de datos NoSQL.
-        </p>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>
-          Proyecto
-        </h3>
-
-        <p>
-          Espacio para publicar los avances, documentos y resultados del
-          proyecto de la asignatura.
-        </p>
-
-      </div>
-
+    <div class="stats">
+      <div class="stat"><b>6</b><span>temas trabajados</span></div>
+      <div class="stat"><b>31</b><span>scripts SQL</span></div>
+      <div class="stat"><b>13</b><span>presentaciones y guías</span></div>
+      <div class="stat"><b>19c</b><span>Oracle Database</span></div>
     </div>
 
+    <div class="ev-nav"><a href="#ev-plsql">01 · PL/SQL</a><a href="#ev-transacciones">02 · Transacciones, concurrencia y bloqueos</a><a href="#ev-indices">03 · Tipos de índices en Oracle</a><a href="#ev-optimizacion">04 · Optimización básica de consultas</a><a href="#ev-sqlavanzado">05 · SQL avanzado</a><a href="#ev-taller">06 · Taller integrador</a></div>
+
+      <article class="evidence" id="ev-plsql">
+        <div class="num">EVIDENCIA 01</div>
+        <h3>PL/SQL: control, funciones, procedimientos, triggers y paquetes</h3>
+        <p>Construí lógica dentro de la base de datos con Oracle 19c, desde un bloque anónimo hasta paquetes completos con pruebas automáticas.</p>
+        <div class="tags"><span>IF / CASE</span><span>LOOP · WHILE · FOR</span><span>Cursores</span><span>Excepciones</span><span>Funciones</span><span>Procedimientos</span><span>Triggers</span><span>Paquetes</span><span>BULK COLLECT / FORALL</span><span>AUTONOMOUS_TRANSACTION</span></div>
+        <h4>Lo que demostré</h4><ul><li><strong>Sentencias de control:</strong> Usé IF, ELSIF y CASE (simple y buscado); comprobé que <code>= NULL</code> nunca es verdadero y que una sentencia CASE sin ELSE lanza CASE_NOT_FOUND. Recorrí datos con LOOP, WHILE, FOR, FOR sobre cursor, CONTINUE y EXIT con etiquetas, y comparé fila a fila contra BULK COLLECT + FORALL.</li><li><strong>Funciones:</strong> Creé fn_nota_definitiva y la invoqué desde SQL, desde PL/SQL y contra DUAL. Provoqué y corregí PLS-00103, ORA-06503 (ruta sin RETURN) y ORA-14551 (DML en una función usada en SQL). Usé DETERMINISTIC con un índice basado en función, RESULT_CACHE y PRAGMA UDF.</li><li><strong>Procedimientos:</strong> Escribí pr_registrar_matricula con parámetros IN/OUT/IN OUT, validaciones con RAISE_APPLICATION_ERROR, SELECT ... FOR UPDATE para controlar el cupo entre dos sesiones, SAVEPOINT y un log con transacción autónoma que sobrevive al ROLLBACK.</li><li><strong>Disparadores:</strong> Implementé BEFORE/AFTER de fila y de sentencia, auditoría con INSERTING/UPDATING/DELETING, cláusula WHEN, FOLLOWS, INSTEAD OF sobre una vista, un trigger de DDL sobre el esquema, y resolví la tabla mutante (ORA-04091) con un disparador compuesto.</li><li><strong>Paquetes:</strong> Desarrollé pkg_inventario (especificación y cuerpo, subprogramas privados, sobrecarga, constantes, catálogo de excepciones, estado e inicialización de sesión) y lo validé con un paquete de pruebas propio: 17 casos que imprimen [OK] o [FALLA].</li></ul>
+        <details><summary>Ver fragmento de código</summary><pre><code>-- Disparador compuesto: evita ORA-04091 al validar el cupo
+CREATE OR REPLACE TRIGGER trg_tope_cupo
+FOR INSERT ON trg_inscripcion
+COMPOUND TRIGGER
+  TYPE t_asignaturas IS TABLE OF NUMBER INDEX BY PLS_INTEGER;
+  v_afectadas t_asignaturas;
+
+  AFTER EACH ROW IS
+  BEGIN
+    v_afectadas(:NEW.id_asignatura) := 1;   -- solo recolecta
+  END AFTER EACH ROW;
+
+  AFTER STATEMENT IS
+    v_idx PLS_INTEGER; v_total NUMBER; v_max NUMBER;
+  BEGIN
+    v_idx := v_afectadas.FIRST;
+    WHILE v_idx IS NOT NULL LOOP
+      SELECT COUNT(*) INTO v_total FROM trg_inscripcion WHERE id_asignatura = v_idx;
+      SELECT cupo_maximo INTO v_max FROM trg_asignatura WHERE id_asignatura = v_idx;
+      IF v_total &gt; v_max THEN
+        RAISE_APPLICATION_ERROR(-20031, 'Cupo excedido en la asignatura ' || v_idx);
+      END IF;
+      v_idx := v_afectadas.NEXT(v_idx);
+    END LOOP;
+  END AFTER STATEMENT;
+END trg_tope_cupo;
+/</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/01-plsql/01_control_plsql19c.sql" target="_blank">01_control_plsql19c.sql</a><a class="sql" href="evidencias/01-plsql/02_funciones_plsql19c.sql" target="_blank">02_funciones_plsql19c.sql</a><a class="sql" href="evidencias/01-plsql/03_procedimientos_plsql19c.sql" target="_blank">03_procedimientos_plsql19c.sql</a><a class="sql" href="evidencias/01-plsql/04_triggers_plsql19c.sql" target="_blank">04_triggers_plsql19c.sql</a><a class="sql" href="evidencias/01-plsql/05_paquetes_pruebas.sql" target="_blank">05_paquetes_pruebas.sql</a><a class="ppt" href="evidencias/01-plsql/01_Sentencias_de_control.pptx" target="_blank">01_Sentencias_de_control.pptx</a><a class="ppt" href="evidencias/01-plsql/02_Funciones.pptx" target="_blank">02_Funciones.pptx</a><a class="ppt" href="evidencias/01-plsql/03_Procedimientos.pptx" target="_blank">03_Procedimientos.pptx</a><a class="ppt" href="evidencias/01-plsql/04_Triggers.pptx" target="_blank">04_Triggers.pptx</a><a class="ppt" href="evidencias/01-plsql/05_Paquetes.pptx" target="_blank">05_Paquetes.pptx</a><a class="ppt" href="evidencias/01-plsql/Cursores.pptx" target="_blank">Cursores.pptx</a><a class="ppt" href="evidencias/01-plsql/Excepciones.pptx" target="_blank">Excepciones.pptx</a></div>
+      </article>
+
+      <article class="evidence" id="ev-transacciones">
+        <div class="num">EVIDENCIA 02</div>
+        <h3>Transacciones, concurrencia y bloqueos</h3>
+        <p>Trabajé en pareja con dos sesiones simultáneas sobre Oracle Autonomous Database para ver en vivo cómo Oracle protege los datos cuando varios usuarios los modifican a la vez.</p>
+        <div class="tags"><span>COMMIT / ROLLBACK / SAVEPOINT</span><span>Multiversión (MVCC)</span><span>Niveles de aislamiento</span><span>SELECT FOR UPDATE</span><span>NOWAIT / SKIP LOCKED</span><span>Interbloqueo ORA-00060</span><span>V$SESSION</span></div>
+        <h4>Lo que demostré</h4><p>Comprobé que los lectores no bloquean a los escritores, reproduje un bloqueo de fila entre la sesión A y la B, la actualización perdida y su solución con FOR UPDATE, provoqué un interbloqueo (ORA-00060) y diagnostiqué en caliente quién bloqueaba a quién consultando las vistas de sesión.</p>
+        <details><summary>Ver fragmento de código</summary><pre><code>-- Sesión A: bloquea la fila y NO confirma
+UPDATE cuenta SET saldo = saldo - 100 WHERE id_cuenta = 1;
+
+-- Sesión B: queda esperando...
+UPDATE cuenta SET saldo = saldo + 50 WHERE id_cuenta = 1;
+
+-- Diagnóstico: ¿quién me bloquea?
+SELECT sid, serial#, blocking_session, event, seconds_in_wait
+  FROM v$session
+ WHERE blocking_session IS NOT NULL;</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/02-transacciones/00_admin_crear_usuarios.sql" target="_blank">00_admin_crear_usuarios.sql</a><a class="sql" href="evidencias/02-transacciones/01_setup_pareja.sql" target="_blank">01_setup_pareja.sql</a><a class="sql" href="evidencias/02-transacciones/02_sesion_A.sql" target="_blank">02_sesion_A.sql</a><a class="sql" href="evidencias/02-transacciones/02_sesion_B.sql" target="_blank">02_sesion_B.sql</a><a class="sql" href="evidencias/02-transacciones/03_diagnostico.sql" target="_blank">03_diagnostico.sql</a><a class="sql" href="evidencias/02-transacciones/04_retos.sql" target="_blank">04_retos.sql</a><a class="sql" href="evidencias/02-transacciones/99_limpieza_1.sql" target="_blank">99_limpieza_1.sql</a><a class="txt" href="evidencias/02-transacciones/LEEME_1.txt" target="_blank">LEEME_1.txt</a><a class="ppt" href="evidencias/02-transacciones/Concurrencia_Transacciones_Bloqueos.pptx" target="_blank">Concurrencia_Transacciones_Bloqueos.pptx</a></div>
+      </article>
+
+      <article class="evidence" id="ev-indices">
+        <div class="num">EVIDENCIA 03</div>
+        <h3>Tipos de índices en Oracle</h3>
+        <p>Comparé los distintos tipos de índice leyendo planes de ejecución y medí lo que cuesta mantener cada uno.</p>
+        <div class="tags"><span>B-tree</span><span>Bitmap</span><span>Basado en función</span><span>Descendente / inverso</span><span>Comprimido / IOT</span><span>Particionados LOCAL y GLOBAL</span><span>Invisible</span><span>Costo del índice</span></div>
+        <h4>Lo que demostré</h4><p>Creé índices B-tree (únicos, compuestos), bitmap sobre columnas de baja cardinalidad y comprobé su bloqueo entre dos sesiones, índices especiales (función, descendente, clave inversa, comprimido, tabla organizada por índice), índices sobre tablas particionadas, índices invisibles y monitoreados, y medí el costo en espacio y en tiempo de INSERT.</p>
+        <details><summary>Ver fragmento de código</summary><pre><code>CREATE INDEX ix_cliente_upper ON cliente (UPPER(nombre));   -- basado en función
+CREATE BITMAP INDEX ix_venta_canal ON venta (canal);          -- baja cardinalidad
+ALTER INDEX ix_cliente_upper INVISIBLE;                       -- probar sin borrarlo
+
+EXPLAIN PLAN FOR SELECT * FROM cliente WHERE UPPER(nombre) = 'GARCIA';
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/03-indices/00_setup_1.sql" target="_blank">00_setup_1.sql</a><a class="sql" href="evidencias/03-indices/01_btree.sql" target="_blank">01_btree.sql</a><a class="sql" href="evidencias/03-indices/02_bitmap.sql" target="_blank">02_bitmap.sql</a><a class="sql" href="evidencias/03-indices/03_especiales.sql" target="_blank">03_especiales.sql</a><a class="sql" href="evidencias/03-indices/04_particionados_y_gestion.sql" target="_blank">04_particionados_y_gestion.sql</a><a class="sql" href="evidencias/03-indices/05_costo_del_indice.sql" target="_blank">05_costo_del_indice.sql</a><a class="sql" href="evidencias/03-indices/99_limpieza_1.sql" target="_blank">99_limpieza_1.sql</a><a class="txt" href="evidencias/03-indices/LEEME_1.txt" target="_blank">LEEME_1.txt</a><a class="ppt" href="evidencias/03-indices/Tipos_de_Indices_Oracle.pptx" target="_blank">Tipos_de_Indices_Oracle.pptx</a></div>
+      </article>
+
+      <article class="evidence" id="ev-optimizacion">
+        <div class="num">EVIDENCIA 04</div>
+        <h3>Optimización básica de consultas</h3>
+        <p>Sobre una tabla de 300.000 ventas aprendí a leer un plan de ejecución y a entender por qué el optimizador elige un camino u otro.</p>
+        <div class="tags"><span>EXPLAIN PLAN</span><span>DBMS_XPLAN</span><span>Full scan vs. índice</span><span>Selectividad</span><span>Estadísticas DBMS_STATS</span></div>
+        <h4>Lo que demostré</h4><p>Comparé TABLE ACCESS FULL contra INDEX RANGE SCAN; vi que una llave foránea no crea índice; identifiqué tres formas de anular un índice sin darse cuenta (función sobre la columna, conversión implícita de tipos y comodín al inicio del LIKE); y comprobé que con estadísticas viejas el plan cambia sin tocar la consulta.</p>
+        <details><summary>Ver fragmento de código</summary><pre><code>-- Anula el índice: aplica una función a la columna
+SELECT * FROM venta WHERE TRUNC(fecha_venta) = DATE '2024-05-10';
+
+-- Lo usa: rango sobre la columna sin tocarla
+SELECT * FROM venta
+ WHERE fecha_venta &gt;= DATE '2024-05-10'
+   AND fecha_venta &lt;  DATE '2024-05-11';</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/04-optimizacion/00_setup.sql" target="_blank">00_setup.sql</a><a class="sql" href="evidencias/04-optimizacion/01_demos.sql" target="_blank">01_demos.sql</a><a class="sql" href="evidencias/04-optimizacion/99_limpieza.sql" target="_blank">99_limpieza.sql</a><a class="pdf" href="evidencias/04-optimizacion/Clase_Optimizacion_Consultas.pdf" target="_blank">Clase_Optimizacion_Consultas.pdf</a></div>
+      </article>
+
+      <article class="evidence" id="ev-sqlavanzado">
+        <div class="num">EVIDENCIA 05</div>
+        <h3>SQL avanzado — Quiz 2 AeroAndes</h3>
+        <p>Con el esquema de una aerolínea (aeropuertos, vuelos, reservas, pasajeros e incidencias) analicé y corregí consultas defectuosas.</p>
+        <div class="tags"><span>JOIN</span><span>Subconsultas</span><span>NOT IN vs NOT EXISTS</span><span>CTE (WITH)</span><span>Funciones analíticas</span><span>RANGE vs ROWS</span><span>Fan-out del join</span></div>
+        <h4>Lo que demostré</h4><p>Detecté por qué un NOT IN falla cuando la subconsulta trae NULL (columna de referidos) y lo corregí con NOT EXISTS; resolví la multiplicación de filas al unir vuelos con varias incidencias agregando antes del join; y expliqué la diferencia entre ventanas RANGE y ROWS cuando varias filas comparten la misma fecha.</p>
+        <details><summary>Ver fragmento de código</summary><pre><code>-- NOT IN devuelve 0 filas si la subconsulta trae un NULL.
+-- Corrección con NOT EXISTS:
+SELECT p.id_pasajero, p.nombre
+  FROM pasajero p
+ WHERE NOT EXISTS (SELECT 1
+                     FROM pasajero r
+                    WHERE r.id_pasajero_referido = p.id_pasajero);
+
+-- Evitar el fan-out: agregar incidencias antes del join
+WITH inc AS (SELECT id_vuelo, SUM(minutos_retraso) AS retraso
+               FROM incidencia GROUP BY id_vuelo)
+SELECT v.num_vuelo, SUM(r.tarifa) AS ingreso, MAX(inc.retraso) AS retraso
+  FROM vuelo v
+  JOIN reserva r ON r.id_vuelo = v.id_vuelo
+  LEFT JOIN inc  ON inc.id_vuelo = v.id_vuelo
+ GROUP BY v.num_vuelo;</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/05-sql-avanzado/01_ddl_aeroandes.sql" target="_blank">01_ddl_aeroandes.sql</a><a class="sql" href="evidencias/05-sql-avanzado/02_datos_aeroandes.sql" target="_blank">02_datos_aeroandes.sql</a><a class="pdf" href="evidencias/05-sql-avanzado/Quiz2_AeroAndes_Guia.pdf" target="_blank">Quiz2_AeroAndes_Guia.pdf</a></div>
+      </article>
+
+      <article class="evidence" id="ev-taller">
+        <div class="num">EVIDENCIA 06</div>
+        <h3>Taller integrador — Banco Andino</h3>
+        <p>Taller final en pareja que reúne todo el curso sobre el caso de un banco, resuelto únicamente con SQL en SQL Developer y Autonomous Database.</p>
+        <div class="tags"><span>Dos sesiones</span><span>Bloqueos</span><span>Índices y planes</span><span>SQL analítico</span><span>Consultas jerárquicas</span><span>MERGE</span><span>Reto final</span></div>
+        <h4>Lo que demostré</h4><p>Parte 1: transacciones y bloqueos con dos conexiones y autocommit apagado. Parte 2: índices y optimización leyendo planes. Parte 3: funciones analíticas, consultas jerárquicas (CONNECT BY) y MERGE. Parte 4: el reto entregable que integra todo lo anterior.</p>
+        <details><summary>Ver fragmento de código</summary><pre><code>MERGE INTO cuenta c
+USING movimientos_dia m
+   ON (c.id_cuenta = m.id_cuenta)
+ WHEN MATCHED THEN
+      UPDATE SET c.saldo = c.saldo + m.valor
+ WHEN NOT MATCHED THEN
+      INSERT (id_cuenta, saldo) VALUES (m.id_cuenta, m.valor);</code></pre></details>
+        <div class="files"><a class="sql" href="evidencias/06-taller-banco-andino/00_setup.sql" target="_blank">00_setup.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/01_sesion_A.sql" target="_blank">01_sesion_A.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/01_sesion_B.sql" target="_blank">01_sesion_B.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/02_indices.sql" target="_blank">02_indices.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/03_sql_avanzado.sql" target="_blank">03_sql_avanzado.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/04_reto.sql" target="_blank">04_reto.sql</a><a class="sql" href="evidencias/06-taller-banco-andino/99_limpieza.sql" target="_blank">99_limpieza.sql</a><a class="txt" href="evidencias/06-taller-banco-andino/LEEME.txt" target="_blank">LEEME.txt</a><a class="pdf" href="evidencias/06-taller-banco-andino/Taller_Integrador_BancoAndino.pdf" target="_blank">Taller_Integrador_BancoAndino.pdf</a><a class="ppt" href="evidencias/06-taller-banco-andino/Taller_BancoAndino_apoyo.pptx" target="_blank">Taller_BancoAndino_apoyo.pptx</a></div>
+      </article>
+
   </section>
+
+  
 
 
   <!-- ==================== OBJETIVO ==================== -->
