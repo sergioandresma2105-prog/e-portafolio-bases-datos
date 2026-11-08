@@ -1,0 +1,42 @@
+=======================================================================
+ Bases de Datos 2 · Tipos de índices en Oracle
+ Scripts de la sesión de dos horas
+=======================================================================
+
+ORDEN
+  00_setup.sql .......................... una vez, antes de clase (~40 s)
+  01_btree.sql .......................... Demos 1 y 2
+  02_bitmap.sql ......................... Demo 3
+  03_especiales.sql ..................... Demo 4
+  04_particionados_y_gestion.sql ........ Demo 5
+  05_costo_del_indice.sql ............... Demo 6  (el que más impacta)
+  99_limpieza.sql ....................... al terminar
+
+Ejecutar POR BLOQUES, no de corrido: cada bloque termina en un plan o en
+un resultado que hay que leer en pantalla antes de seguir.
+
+EDICIÓN DEL MOTOR
+  Bitmap y particionamiento existen en Enterprise Edition y en XE.
+  En Standard Edition 2 no: CREATE BITMAP INDEX falla con ORA-00439 y
+  CREATE TABLE ... PARTITION BY con ORA-00439 también.
+  Si su instancia es SE2, salte 02_bitmap.sql y la primera mitad de
+  04_particionados_y_gestion.sql; el resto corre igual.
+
+  Para saber qué edición tiene:
+     SELECT banner_full FROM v$version;
+
+PRIVILEGIOS
+  CREATE TABLE, CREATE INDEX, CREATE SEQUENCE y cuota .... obligatorio
+  SELECT sobre V$INDEX_USAGE_INFO ....... solo para el punto 5 del 04
+  (si no lo tiene, salte esa consulta)
+
+DÓNDE EJECUTARLOS
+  SQL*Plus, SQLcl o SQL Developer. Solo se usa EXPLAIN PLAN con
+  DBMS_XPLAN.DISPLAY, que funciona con privilegios normales.
+  En SQL Developer, F10 sobre la consulta hace lo mismo.
+
+EL DEMO DE BLOQUEO CON BITMAP
+  Está en 02_bitmap.sql, punto 4, y necesita DOS sesiones abiertas.
+  Vale la pena montarlo antes de clase: es el argumento que explica por
+  qué no se usa bitmap en OLTP, y hay que verlo para creerlo.
+=======================================================================
